@@ -17,14 +17,17 @@ public class RouteActivity extends AppCompatActivity {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    mTextMessage.setText(R.string.title_home);
+                case R.id.navigation_highest_chance:
+                    mTextMessage.setText(R.string.nav_highest_chance);
                     return true;
-                case R.id.navigation_dashboard:
-                    mTextMessage.setText(R.string.title_dashboard);
+                case R.id.navigation_magnetfield:
+                    mTextMessage.setText(R.string.nav_magnetfield);
                     return true;
-                case R.id.navigation_notifications:
-                    mTextMessage.setText(R.string.title_notifications);
+                case R.id.navigation_weather:
+                    mTextMessage.setText(R.string.nav_weather);
+                    return true;
+                case R.id.navigation_light_pollution:
+                    mTextMessage.setText(R.string.nav_light_pollution);
                     return true;
             }
             return false;

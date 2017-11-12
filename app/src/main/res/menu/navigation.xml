@@ -2,18 +2,25 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_home"
-        android:icon="@drawable/ic_home_black_24dp"
-        android:title="@string/title_home"/>
+        android:id="@+id/navigation_highest_chance"
+        android:icon="@drawable/recommended2x"
+        android:title="@string/nav_highest_chance"
+        android:visible="false" />
 
     <item
-        android:id="@+id/navigation_dashboard"
-        android:icon="@drawable/ic_dashboard_black_24dp"
-        android:title="@string/title_dashboard"/>
+        android:id="@+id/navigation_magnetfield"
+        android:icon="@drawable/aurora_borealis2x"
+        android:title="@string/nav_magnetfield"
+        android:visible="true"
+        />
 
     <item
-        android:id="@+id/navigation_notifications"
-        android:icon="@drawable/ic_notifications_black_24dp"
-        android:title="@string/title_notifications"/>
+        android:id="@+id/navigation_weather"
+        android:icon="@drawable/cloudy2x"
+        android:title="@string/nav_weather"/>
 
+    <item
+        android:id="@+id/navigation_light_pollution"
+        android:icon="@drawable/street_light2x"
+        android:title="@string/nav_light_pollution"/>
 </menu>

@@ -3,4 +3,8 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="nav_highest_chance">Highest Chance</string>
+    <string name="nav_magnetfield">Magnetfield</string>
+    <string name="nav_weather">Weather</string>
+    <string name="nav_light_pollution">Light Pollution</string>
 </resources>
