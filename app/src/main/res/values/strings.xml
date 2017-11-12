@@ -8,4 +8,5 @@
     <string name="nav_weather">Weather</string>
     <string name="nav_light_pollution">Light Pollution</string>
     <string name="title_activity_maps">Map</string>
+    <string name="map_overlay">map overlay</string>
 </resources>
