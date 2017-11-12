@@ -3,10 +3,22 @@ package expd.gjovik.ntnu.no.hunting_lights;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.MapsInitializer;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.CameraPosition;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 
 /**
@@ -16,7 +28,12 @@ import android.view.ViewGroup;
  * Use the {@link RouteFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class RouteFragment extends Fragment {
+public class RouteFragment extends Fragment implements OnMapReadyCallback {
+
+    private MapView mMap;
+    private View mView;
+    private GoogleMap mGoogleMap;
+
     public RouteFragment() {
         // Required empty public constructor
     }
@@ -28,55 +45,64 @@ public class RouteFragment extends Fragment {
      *
      * @return A new instance of fragment RouteFragment.
      */
-
     public static RouteFragment newInstance() {
         RouteFragment fragment = new RouteFragment();
-        /*
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        */
         return fragment;
     }
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        /*
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-        */
+
+        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+        MapFragment mapFragment = (MapFragment) getActivity().getFragmentManager().findFragmentById(R.id.map);
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_route, container, false);
+        mView = inflater.inflate(R.layout.fragment_route, container, false);
+        return mView;
     }
 
+    @Override
+    public void onViewCreated(View view,  Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        mMap = (MapView) mView.findViewById(R.id.map);
+        if (mMap != null) {
+            mMap.onCreate(null);
+            mMap.onResume();
+            mMap.getMapAsync(this);
+        }
+    }
+
+    /**
+     * Manipulates the map once available.
+     * This callback is triggered when the map is ready to be used.
+     * This is where we can add markers or lines, add listeners or move the camera. In this case,
+     * we just add a marker near Sydney, Australia.
+     * If Google Play services is not installed on the device, the user will be prompted to install
+     * it inside the SupportMapFragment. This method will only be triggered once the user has
+     * installed Google Play services and returned to the app.
+     */
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        MapsInitializer.initialize(getContext());
+
+        mGoogleMap = googleMap;
+        googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+
+        googleMap.addMarker(new MarkerOptions().position(new LatLng(69.653378, 18.928732)).title("Tromso"));
+
+        CameraPosition tromso = CameraPosition.builder().target(new LatLng(69.653378, 18.928732)).zoom(100).build();
+        googleMap.moveCamera(CameraUpdateFactory.newCameraPosition(tromso));
+    }
 
     @Override
     public void onDetach() {
         super.onDetach();
     }
 
-//    /**
-//     * This interface must be implemented by activities that contain this
-//     * fragment to allow an interaction in this fragment to be communicated
-//     * to the activity and potentially other fragments contained in that
-//     * activity.
-//     * <p>
-//     * See the Android Training lesson <a href=
-//     * "http://developer.android.com/training/basics/fragments/communicating.html"
-//     * >Communicating with Other Fragments</a> for more information.
-//     */
-//    public interface OnFragmentInteractionListener {
-//        // TODO: Update argument type and name
-//        void onFragmentInteraction(Uri uri);
-//    }
 }

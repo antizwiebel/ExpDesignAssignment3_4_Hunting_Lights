@@ -4,10 +4,9 @@
              android:layout_height="match_parent"
              tools:context="expd.gjovik.ntnu.no.hunting_lights.RouteFragment">
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"/>
+    <com.google.android.gms.maps.MapView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/map"/>
 
 </FrameLayout>
