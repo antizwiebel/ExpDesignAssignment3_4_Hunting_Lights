@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_highest_chance"
+        android:id="@+id/navigation_route"
         android:icon="@drawable/recommended2x"
         android:title="@string/nav_highest_chance"
         android:visible="false" />
