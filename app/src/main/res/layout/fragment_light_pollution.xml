@@ -4,7 +4,7 @@
              android:layout_height="match_parent"
              tools:context="expd.gjovik.ntnu.no.hunting_lights.LightPollutionFragment">
 
-    <com.github.mikephil.charting.charts.LineChart
+    <com.github.mikephil.charting.charts.BarChart
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="35dp"
