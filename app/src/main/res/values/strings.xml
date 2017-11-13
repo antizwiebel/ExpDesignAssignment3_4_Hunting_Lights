@@ -9,4 +9,7 @@
     <string name="nav_light_pollution">Light Pollution</string>
     <string name="title_activity_maps">Map</string>
     <string name="map_overlay">map overlay</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

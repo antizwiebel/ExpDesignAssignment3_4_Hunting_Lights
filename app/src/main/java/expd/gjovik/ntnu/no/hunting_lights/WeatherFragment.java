@@ -2,14 +2,16 @@ package expd.gjovik.ntnu.no.hunting_lights;
 
 
 import android.graphics.Color;
-import android.graphics.Point;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
@@ -21,75 +23,61 @@ import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link WeatherFragment#newInstance} factory method to
- * create an instance of this fragment.
  */
-
-
 public class WeatherFragment extends Fragment {
 
-
-    View mView;
-
-    public WeatherFragment() {
-        // Required empty public constructor
-    }
+    private View mView;
 
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @return A new instance of fragment WeatherFragment.
+     * @return A new instance of fragment LightPollutionFragment.
      */
     public static WeatherFragment newInstance() {
         WeatherFragment fragment = new WeatherFragment();
-        Bundle args = new Bundle();
         return fragment;
     }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-
-        super.onCreate(savedInstanceState);
-
-
+    public WeatherFragment() {
+        // Required empty public constructor
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         // Inflate the layout for this fragment
-        mView= inflater.inflate(R.layout.fragment_weather, container, false);
-        return inflater.inflate(R.layout.fragment_weather, container, false);
-    }
+        mView = inflater.inflate(R.layout.fragment_weather, container, false);
+        // in this example, a LineChart is initialized from xml
+        LineChart chart = (LineChart) mView.findViewById(R.id.lineChart);
+        int[] dataObjects = new int[]{-2,0,3,4};
 
-    @Override
-    public void onActivityCreated (Bundle savedInstanceState){
-        super.onActivityCreated(savedInstanceState);
-        populateChart();
-    }
+        List<Entry> entries = new ArrayList<Entry>();
 
-
-    //populate Chart
-    void populateChart(){
-
-        LineChart weatherChart = mView.findViewById(R.id.linechart1);
-
-
-        List<Entry> lineList = new ArrayList<Entry>();
-        lineList.add(new Entry(1f, 0f));
-        lineList.add(new Entry(2f, 1f));
-        lineList.add(new Entry(3f, 2f));
-        lineList.add(new Entry(4f, 3f));
-        lineList.add(new Entry(5f, 4f));
-
-        LineDataSet learnDataSet = new LineDataSet(lineList, "Line");
-        LineData lineData = new LineData(learnDataSet);
-        weatherChart.setData(lineData);
-        weatherChart.invalidate(); // refresh
-        
-
+        for (int i=0; i<dataObjects.length; i++) {
+            // turn your data into Entry objects
+            entries.add(new Entry(i, dataObjects[i]));
+        }
+        LineDataSet dataSet = new LineDataSet(entries, "Temperatures in °C"); // add entries to dataset
+        dataSet.setColor(Color.CYAN);
+        dataSet.setLineWidth(3.0f);
+        dataSet.setDrawFilled(true);
+        GradientDrawable drawable = (GradientDrawable) ContextCompat.getDrawable(getContext(), R.drawable.chart_gradient);
+        //GradientDrawable gradientDrawable = (GradientDrawable) getContext().getResources(R.drawable.chart_gradient);
+        dataSet.setFillDrawable(drawable);
+        LineData lineData = new LineData(dataSet);
+        chart.setData(lineData);
+        chart.setGridBackgroundColor(Color.WHITE);
+        XAxis xAxis = chart.getXAxis();
+        xAxis.setDrawGridLines(false);
+        chart.setBorderWidth(3.0f);
+        chart.animateY(2000);
+        Description description = new Description();
+        description.setText("Temperatures in °C");
+        chart.setDescription(description);
+        chart.invalidate(); // refresh
+        return mView;
     }
 
 }

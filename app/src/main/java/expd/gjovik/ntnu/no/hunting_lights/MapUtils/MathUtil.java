@@ -1,4 +1,4 @@
-package expd.gjovik.ntnu.no.hunting_lights;
+package expd.gjovik.ntnu.no.hunting_lights.MapUtils;
 
 /**
  * Created by Mark on 12.11.2017.

@@ -10,23 +10,11 @@
         android:id="@+id/map"/>
 
     <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
         android:id="@+id/imageOverlay"
-        android:src="@drawable/newark_nj_1922"
-        android:contentDescription="overlay image"/>
-    <!--
-    <com.google.android.gms.maps.MapView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/map"/>
-
-    <ImageView
-        android:id="@+id/overlayImage"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
-        android:src="@mipmap/icon"/>
-        -->
+        android:contentDescription="overlay image"
+        android:scaleType="centerCrop"
+        android:src="@drawable/test_overlay"/>
 
 </RelativeLayout>

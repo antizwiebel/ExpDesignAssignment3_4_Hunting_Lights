@@ -1,4 +1,4 @@
-package expd.gjovik.ntnu.no.hunting_lights;
+package expd.gjovik.ntnu.no.hunting_lights.MapUtils;
 
 /**
  * Created by Mark on 12.11.2017.
@@ -24,7 +24,6 @@ import com.google.android.gms.maps.model.LatLng;
 
 import java.util.List;
 
-import static expd.gjovik.ntnu.no.hunting_lights.MathUtil.*;
 import static java.lang.Math.*;
 
 public class SphericalUtil {
@@ -46,7 +45,7 @@ public class SphericalUtil {
         double heading = atan2(
                 sin(dLng) * cos(toLat),
                 cos(fromLat) * sin(toLat) - sin(fromLat) * cos(toLat) * cos(dLng));
-        return wrap(toDegrees(heading), -180, 180);
+        return MathUtil.wrap(toDegrees(heading), -180, 180);
     }
 
     /**
@@ -57,7 +56,7 @@ public class SphericalUtil {
      * @param heading  The heading in degrees clockwise from north.
      */
     public static LatLng computeOffset(LatLng from, double distance, double heading) {
-        distance /= EARTH_RADIUS;
+        distance /= MathUtil.EARTH_RADIUS;
         heading = toRadians(heading);
         // http://williams.best.vwh.net/avform.htm#LL
         double fromLat = toRadians(from.latitude);
@@ -84,7 +83,7 @@ public class SphericalUtil {
      */
     public static LatLng computeOffsetOrigin(LatLng to, double distance, double heading) {
         heading = toRadians(heading);
-        distance /= EARTH_RADIUS;
+        distance /= MathUtil.EARTH_RADIUS;
         // http://lists.maptools.org/pipermail/proj/2008-October/003939.html
         double n1 = cos(distance);
         double n2 = sin(distance) * cos(heading);
@@ -158,7 +157,7 @@ public class SphericalUtil {
      * Returns distance on the unit sphere; the arguments are in radians.
      */
     private static double distanceRadians(double lat1, double lng1, double lat2, double lng2) {
-        return arcHav(havDistance(lat1, lat2, lng1 - lng2));
+        return MathUtil.arcHav(MathUtil.havDistance(lat1, lat2, lng1 - lng2));
     }
 
     /**
@@ -174,7 +173,7 @@ public class SphericalUtil {
      * Returns the distance between two LatLngs, in meters.
      */
     public static double computeDistanceBetween(LatLng from, LatLng to) {
-        return computeAngleBetween(from, to) * EARTH_RADIUS;
+        return computeAngleBetween(from, to) * MathUtil.EARTH_RADIUS;
     }
 
     /**
@@ -195,7 +194,7 @@ public class SphericalUtil {
             prevLat = lat;
             prevLng = lng;
         }
-        return length * EARTH_RADIUS;
+        return length * MathUtil.EARTH_RADIUS;
     }
 
     /**
@@ -215,7 +214,7 @@ public class SphericalUtil {
      * @return The loop's area in square meters.
      */
     public static double computeSignedArea(List<LatLng> path) {
-        return computeSignedArea(path, EARTH_RADIUS);
+        return computeSignedArea(path, MathUtil.EARTH_RADIUS);
     }
 
     /**

@@ -1,13 +1,13 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
              xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
              tools:context="expd.gjovik.ntnu.no.hunting_lights.LightPollutionFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <com.github.mikephil.charting.charts.LineChart
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Light"/>
+        android:layout_marginBottom="35dp"
+        android:id="@+id/lineChart"/>
 
-</FrameLayout>
+</RelativeLayout>
