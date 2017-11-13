@@ -62,10 +62,6 @@ public class WeatherFragment extends Fragment {
         LineDataSet dataSet = new LineDataSet(entries, "Temperatures in °C"); // add entries to dataset
         dataSet.setColor(Color.CYAN);
         dataSet.setLineWidth(3.0f);
-        dataSet.setDrawFilled(true);
-        GradientDrawable drawable = (GradientDrawable) ContextCompat.getDrawable(getContext(), R.drawable.chart_gradient);
-        //GradientDrawable gradientDrawable = (GradientDrawable) getContext().getResources(R.drawable.chart_gradient);
-        dataSet.setFillDrawable(drawable);
         LineData lineData = new LineData(dataSet);
         chart.setData(lineData);
         chart.setGridBackgroundColor(Color.WHITE);

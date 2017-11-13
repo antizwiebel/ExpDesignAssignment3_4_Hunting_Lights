@@ -2,9 +2,11 @@ package expd.gjovik.ntnu.no.hunting_lights;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -68,6 +70,9 @@ public class LightPollutionFragment extends Fragment {
         LineDataSet dataSet = new LineDataSet(entries, "Temperatures in °C"); // add entries to dataset
         dataSet.setColor(Color.CYAN);
         dataSet.setLineWidth(4.0f);
+        dataSet.setDrawFilled(true);
+        GradientDrawable drawable = (GradientDrawable) ContextCompat.getDrawable(getContext(), R.drawable.chart_gradient);
+        dataSet.setFillDrawable(drawable);
         LineData lineData = new LineData(dataSet);
         chart.setData(lineData);
         chart.setGridBackgroundColor(Color.WHITE);
