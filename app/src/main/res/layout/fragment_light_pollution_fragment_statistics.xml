@@ -9,6 +9,6 @@
         android:layout_height="match_parent"
         android:layout_marginBottom="35dp"
         android:layout_marginTop="?attr/actionBarSize"
-        android:id="@+id/lineChart"/>
+        android:id="@+id/barChart"/>
 
 </RelativeLayout>

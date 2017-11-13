@@ -54,7 +54,7 @@ public class LightPollutionFragmentStatistics extends Fragment {
 
         mView = inflater.inflate(R.layout.fragment_light_pollution_fragment_statistics, container, false);
         // in this example, a LineChart is initialized from xml
-        BarChart chart = (BarChart) mView.findViewById(R.id.lineChart);
+        BarChart chart = (BarChart) mView.findViewById(R.id.barChart);
         int[] dataObjects = new int[]{150,119,523,2017, 233};
 
         List<BarEntry> entries = new ArrayList<BarEntry>();
@@ -63,7 +63,7 @@ public class LightPollutionFragmentStatistics extends Fragment {
             // turn your data into Entry objects
             entries.add(new BarEntry(i, dataObjects[i]));
         }
-        BarDataSet dataSet = new BarDataSet(entries, "Temperatures in °C"); // add entries to dataset
+        BarDataSet dataSet = new BarDataSet(entries, "Lightpollution in lux"); // add entries to dataset
         dataSet.setColor(R.color.colorPrimary);
         dataSet.setValueTextSize(11f);
         BarData lineData = new BarData(dataSet);
