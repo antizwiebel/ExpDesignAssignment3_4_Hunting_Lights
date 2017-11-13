@@ -1,45 +1,38 @@
-package expd.gjovik.ntnu.no.hunting_lights;
+package expd.gjovik.ntnu.no.hunting_lights.lightpollution;
 
-import android.content.Context;
+
 import android.graphics.Color;
-import android.graphics.drawable.GradientDrawable;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.github.mikephil.charting.charts.BarChart;
-import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
-import com.github.mikephil.charting.data.Entry;
-import com.github.mikephil.charting.data.LineData;
-import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import expd.gjovik.ntnu.no.hunting_lights.R;
+
 
 /**
  * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * to handle interaction events.
- * Use the {@link LightPollutionFragment#newInstance} factory method to
- * create an instance of this fragment.
  */
-public class LightPollutionFragment extends Fragment {
+public class LightPollutionFragmentStatistics extends Fragment {
+
 
     private View mView;
-    public LightPollutionFragment() {
+
+    public LightPollutionFragmentStatistics() {
         // Required empty public constructor
     }
 
@@ -49,21 +42,17 @@ public class LightPollutionFragment extends Fragment {
      *
      * @return A new instance of fragment LightPollutionFragment.
      */
-    public static LightPollutionFragment newInstance() {
-        LightPollutionFragment fragment = new LightPollutionFragment();
+    public static LightPollutionFragmentStatistics newInstance() {
+        LightPollutionFragmentStatistics fragment = new LightPollutionFragmentStatistics();
         return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        mView = inflater.inflate(R.layout.fragment_light_pollution, container, false);
+
+        mView = inflater.inflate(R.layout.fragment_light_pollution_fragment_statistics, container, false);
         // in this example, a LineChart is initialized from xml
         BarChart chart = (BarChart) mView.findViewById(R.id.lineChart);
         int[] dataObjects = new int[]{150,119,523,2017, 233};
@@ -75,8 +64,8 @@ public class LightPollutionFragment extends Fragment {
             entries.add(new BarEntry(i, dataObjects[i]));
         }
         BarDataSet dataSet = new BarDataSet(entries, "Temperatures in °C"); // add entries to dataset
-        dataSet.setColor(Color.BLUE);
-
+        dataSet.setColor(R.color.colorPrimary);
+        dataSet.setValueTextSize(11f);
         BarData lineData = new BarData(dataSet);
 
         final HashMap<Integer, String> numMap = new HashMap<>();
@@ -96,7 +85,8 @@ public class LightPollutionFragment extends Fragment {
             }
         });
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-
+        xAxis.setTextSize(11f);
+        xAxis.setTextColor(Color.WHITE);
         chart.setFitBars(true);
         chart.setData(lineData);
         chart.setBackgroundColor(Color.parseColor("#8ABFC2"));
@@ -105,17 +95,12 @@ public class LightPollutionFragment extends Fragment {
         chart.animateXY(1000, 1000);
         Description description = new Description();
         description.setText("Light pollution in lux");
-        description.setTextSize(25);
+        description.setTextSize(22);
         description.setTextColor(Color.WHITE);
-        description.setPosition(600,100);
+        description.setPosition(650,100);
         chart.setDescription(description);
         chart.invalidate(); // refresh
         return mView;
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
     }
 
 }

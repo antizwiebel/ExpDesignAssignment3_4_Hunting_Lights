@@ -1,4 +1,4 @@
-package expd.gjovik.ntnu.no.hunting_lights;
+package expd.gjovik.ntnu.no.hunting_lights.route;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -31,6 +31,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import expd.gjovik.ntnu.no.hunting_lights.R;
 import expd.gjovik.ntnu.no.hunting_lights.MapUtils.PolyUtil;
 
 

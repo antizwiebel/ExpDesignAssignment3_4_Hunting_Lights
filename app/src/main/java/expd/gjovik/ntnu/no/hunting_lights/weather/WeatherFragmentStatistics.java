@@ -1,4 +1,4 @@
-package expd.gjovik.ntnu.no.hunting_lights;
+package expd.gjovik.ntnu.no.hunting_lights.weather;
 
 
 import android.graphics.Color;
@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.Description;
-import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
@@ -24,35 +23,30 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import expd.gjovik.ntnu.no.hunting_lights.R;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class WeatherFragment extends Fragment {
+public class WeatherFragmentStatistics extends Fragment {
+
 
     private View mView;
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @return A new instance of fragment LightPollutionFragment.
-     */
-    public static WeatherFragment newInstance() {
-        WeatherFragment fragment = new WeatherFragment();
-        return fragment;
-    }
-
-    public WeatherFragment() {
+    public WeatherFragmentStatistics() {
         // Required empty public constructor
     }
 
+    public static WeatherFragmentStatistics newInstance() {
+        WeatherFragmentStatistics fragment = new WeatherFragmentStatistics();
+        return fragment;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        mView = inflater.inflate(R.layout.fragment_weather, container, false);
+        mView = inflater.inflate(R.layout.fragment_weather_fragment_statistics, container, false);
         // in this example, a LineChart is initialized from xml
         LineChart chart = (LineChart) mView.findViewById(R.id.lineChart);
         int[] dataObjects = new int[]{-2,0,1,5,8,4,11,12};
@@ -66,6 +60,7 @@ public class WeatherFragment extends Fragment {
         LineDataSet dataSet = new LineDataSet(entries, "Temperatures in °C"); // add entries to dataset
         dataSet.setColor(Color.WHITE);
         dataSet.setLineWidth(3.0f);
+        dataSet.setValueTextSize(11f);
         //dataSet.setDrawCircleHole(true);
         dataSet.setMode(LineDataSet.Mode.CUBIC_BEZIER);
         dataSet.setDrawFilled(true);
@@ -87,7 +82,8 @@ public class WeatherFragment extends Fragment {
 
         XAxis xAxis = chart.getXAxis();
         xAxis.setDrawGridLines(false);
-
+        xAxis.setTextSize(13);
+        xAxis.setTextColor(Color.WHITE);
         xAxis.setValueFormatter(new IAxisValueFormatter() {
             @Override
             public String getFormattedValue(float value, AxisBase axis) {
@@ -101,8 +97,8 @@ public class WeatherFragment extends Fragment {
         Description description = new Description();
         description.setText("Temperatures in °C");
         description.setTextColor(Color.WHITE);
-        description.setTextSize(25);
-        description.setPosition(600,100);
+        description.setTextSize(22);
+        description.setPosition(650,100);
         chart.setDescription(description);
 
         chart.invalidate(); // refresh

@@ -9,7 +9,11 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
+
+import expd.gjovik.ntnu.no.hunting_lights.lightpollution.LightPollutionFragment;
+import expd.gjovik.ntnu.no.hunting_lights.magnetfield.MagnetFieldFragment;
+import expd.gjovik.ntnu.no.hunting_lights.route.RouteFragment;
+import expd.gjovik.ntnu.no.hunting_lights.weather.WeatherFragment;
 
 public class MainActivity extends AppCompatActivity{
 
