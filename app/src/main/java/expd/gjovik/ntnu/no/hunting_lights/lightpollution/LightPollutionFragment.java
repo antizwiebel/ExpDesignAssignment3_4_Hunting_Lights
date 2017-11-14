@@ -50,9 +50,9 @@ public class LightPollutionFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         mView = inflater.inflate(R.layout.fragment_light_pollution, container, false);
-        firstViewPager = (ViewPager) mView.findViewById(R.id.viewpager_content);
+        firstViewPager = mView.findViewById(R.id.viewpager_content);
 
-        tabLayout = (TabLayout) mView.findViewById(R.id.tabs);
+        tabLayout = mView.findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(firstViewPager);
 
         setupViewPager(firstViewPager);

@@ -34,7 +34,7 @@ public class MagnetFieldFragmentMap extends Fragment implements OnMapReadyCallba
     private ImageView mImageVIew;
 
     //TODO: change coordinates
-    private static final LatLng TROMSO = new LatLng(40.714086, -74.228697);
+    private static final LatLng TROMSO = new LatLng(69.649208, 18.955324);
 
     public MagnetFieldFragmentMap() {
         // Required empty public constructor
@@ -89,6 +89,6 @@ public class MagnetFieldFragmentMap extends Fragment implements OnMapReadyCallba
         mGoogleMap = googleMap;
         googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
         //set to tromso
-        mGoogleMap.moveCamera( CameraUpdateFactory.newLatLngZoom(TROMSO , 14.0f) );
+        mGoogleMap.moveCamera( CameraUpdateFactory.newLatLngZoom(TROMSO , 11) );
     }
 }

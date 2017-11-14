@@ -32,7 +32,7 @@ public class LightPollutionFragmentMap extends Fragment implements OnMapReadyCal
     private ImageView mImageView;
 
     //TODO: change coordinates
-    private static final LatLng TROMSO = new LatLng(40.714086, -74.228697);
+    private static final LatLng TROMSO = new LatLng(59.960578, 10.754332);
 
     public LightPollutionFragmentMap() {
         // Required empty public constructor
@@ -82,6 +82,6 @@ public class LightPollutionFragmentMap extends Fragment implements OnMapReadyCal
         mGoogleMap = googleMap;
         googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
         //set to tromso
-        mGoogleMap.moveCamera( CameraUpdateFactory.newLatLngZoom(TROMSO , 14.0f) );
+        mGoogleMap.moveCamera( CameraUpdateFactory.newLatLngZoom(TROMSO , 11) );
     }
 }
