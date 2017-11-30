@@ -98,7 +98,7 @@ public class WeatherFragmentStatistics extends Fragment {
         description.setText("Temperatures in °C");
         description.setTextColor(Color.WHITE);
         description.setTextSize(22);
-        description.setPosition(650,100);
+        description.setPosition(650,200);
         chart.setDescription(description);
 
         chart.invalidate(); // refresh
